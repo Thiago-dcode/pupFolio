@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Dog extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $with = ['sizes', 'breeds'];
     public function breed()
     {
         return $this->belongsTo(Breed::class);
