@@ -1,32 +1,51 @@
 <template>
-   <q-card class="my-card">
-      <img :src="image">
-
+   
+    <q-card class="my-card">
+    <router-link :to="`/dogs/${dog.id}`">
+      <q-img :src="fullImageUrl" ratio="1"/>
+    </router-link>
       <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
+        <div class="text-h6">{{ dog.name }}</div>
+        <div class="text-subtitle2">{{ dog.breed.name }}</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        {{ description }}
+        {{ dog.description }}
       </q-card-section>
     </q-card>
+
 </template>
 
 <script >
-export default {
-  props: {
-    name: String,
-    description: String,
-    image: String,
-    breed: String,
-    size:String,
-    color: String
+import { defineComponent } from 'vue'
+export default defineComponent({
+    name: 'DogCard',
+    props: {
+        dog: {
+            type: Object,
+            required: true
+        },
+        api:{
+            type:String,
+            required:true
+        }
 
-
-  },
-  setup(props) {
-   
+       
+    },
+    computed: {
+    fullImageUrl() {
+      return this.api + this.dog.image;
+    }
   }
-}
+},
+)
+
 </script>
+
+<style lang="sass" scoped>
+.my-card
+  
+  width: 100%
+ 
+  max-width: 250px
+</style>
