@@ -9,7 +9,7 @@
                 :options="breedList" label="Breed" />
             <q-select :pending="isPending" v-model="selectedSize" option-label="name" option-value="id" :options="sizeList"
                 label="Size" />
-            <q-file color="teal" filled v-model="model" label="Your puppy image">
+            <q-file color="teal" filled v-model="image" label="Your puppy image">
                 <template v-slot:prepend>
                     <q-icon name="pets" />
                 </template>
@@ -33,6 +33,7 @@ export default {
     setup() {
         const $q = useQuasar()
         const name = ref(null)
+        const image = ref(null)
         const description = ref(null)
         const isPending = ref(true)
         const breedList = ref([])
@@ -40,6 +41,7 @@ export default {
         const accept = ref(false)
         const apiUrl = process.env.API;
         const selectedBreed = ref(null)
+        const selectedSize = ref(null)
         onMounted(async () => {
           try {
               // Access the dynamic route parameter in the setup function
@@ -67,11 +69,13 @@ export default {
 
         return {
             name,
+            image,
             description,
             breedList,
             sizeList,
             accept,
             selectedBreed,
+            selectedSize,
             isPending,
 
             onSubmit() {
@@ -80,8 +84,9 @@ export default {
 
             onReset() {
                 name.value = null
-                age.value = null
-                accept.value = false
+                image.value = null
+                description.value = null
+             
             }
         }
     }
