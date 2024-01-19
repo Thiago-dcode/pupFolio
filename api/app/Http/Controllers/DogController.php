@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dog;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -54,7 +55,7 @@ class DogController extends Controller
                     in_array($image->getClientMimeType(), $allowedMimeTypes, true)
                 ) {
                     // Generate a unique filename to prevent overwriting existing files
-                    $uniqueFilename = uniqid($request->input('name')) . '.' . $image->getClientOriginalExtension();
+                    $uniqueFilename =  uniqid($request->input('name')) . '.' . $image->getClientOriginalExtension();
 
                     // Store the uploaded file in the public disk under the 'dog_images' directory
                     $imagePath = $image->storeAs('dog_images', $uniqueFilename, 'public');
@@ -70,7 +71,7 @@ class DogController extends Controller
                 'description' => $fields['description'],
                 'breed_id' => $fields['breed'],
                 'size_id' => $fields['size'],
-                'image' => $imagePath,
+                'image' =>'storage/'. $imagePath,
             ]);
 
             return response()->json(['dog' => $dog], 201);
@@ -80,6 +81,19 @@ class DogController extends Controller
         } catch (\Exception $e) {
             // Handle other exceptions (e.g., database errors) and return an error response
             return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+    public function destroy($id)
+    {
+        
+        try {
+            $dog = Dog::findOrFail($id);
+        
+            $dog->delete();
+
+            return response()->json(['message' => 'Dog deleted successfully'], 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
         }
     }
 }

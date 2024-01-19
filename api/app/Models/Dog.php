@@ -9,9 +9,13 @@ class Dog extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $with = ['sizes', 'breeds'];
+    protected $with = ['size', 'breed'];
     public function breed()
     {
         return $this->belongsTo(Breed::class);
+    }
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
     }
 }
