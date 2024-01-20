@@ -1,95 +1,96 @@
-PupFolio
+# PupFolio
 
-PupFolio is a project that showcases a portfolio of adorable puppies. Follow the steps below to set it up on your Windows machine.
-Installation Guide for Windows OS
-Requirements
 
+
+## Description
+
+PupFolio is a delightful project that showcases a portfolio of adorable puppies. Follow the steps below to set it up on your Windows machine.
+
+## Installation
+
+### Requirements
 Make sure you have the following installed on your local machine:
 
-    Composer
-    Docker
+* [Composer](https://getcomposer.org/)
+* [Node.js](https://nodejs.org/en)
+* [Docker](https://www.docker.com/get-started/)
 
-Clone Repository
+### Clone this repository
 
-bash
-
+```
 git clone https://github.com/Thiago-dcode/pupFolio.git
+```
+
+### Navigate into the project
+```
 cd pupFolio
+```
 
-Backend Setup
 
-Navigate to the backend folder:
+## API Setup
 
-bash
-
+### Navigate to the backend folder:
+```
 cd api
+```
 
-Install dependencies using Composer:
-
-bash
-
+### Install dependencies using Composer:
+```
 composer install
+```
+* #### Copy the Copy the **.env.example** file and rename it to **.env.** 
 
-Copy the .env.example file and rename it to .env. Update the following values in the .env file under DB_CONNECTION=mysql:
+* #### Update the following values in the **.env** file below DB_CONNECTION=mysql:
+```
+  DB_DATABASE
+  DB_USERNAME
+  DB_PASSWORD
+```
+### Dockerize MySQL
 
-    DB_DATABASE
-    DB_USERNAME
-    DB_PASSWORD
+***Assuming docker is correctly installed on your local machine, run this command:***
 
-Dockerize MySQL
-
-bash
-
+```
 docker-compose up -d
 
-Ensure that your MySQL instance is running.
-
-Run migrations:
-
-bash
-
+```
+***Ensure that your MySQL instance is running.***
+#### Run migrations:
+```
 php artisan migrate
-
-Seed the database with sizes, breeds, and optional dogs:
-
-bash
-
+```
+#### Seed the database with sizes, breeds, and optional dogs:
+```
 php artisan db:seed --class=sizeSeeder
 php artisan db:seed --class=breedSeeder
-php artisan db:seed --class=dogSeeder  # Optional
+php artisan db:seed --class=dogSeeder  
+```
 
-Link storage with the public folder:
-
-bash
-
+#### Link storage with the public folder:
+```
 php artisan storage:link
+```
 
-Run the server:
-
-bash
-
+#### Run the server:
+```
 php artisan serve
+```
 
-Frontend Setup
+## Frontend Setup
 
-In another terminal, access the frontend folder:
-
-bash
-
+#### In another terminal, navigate to **frontend** folder:
+```
 cd pupFolio/front
+```
 
-Install Node dependencies:
 
-bash
-
+#### Install Node dependencies:
+```
 npm i
+```
 
-Run the Quasar server:
 
-bash
-
+#### Finally, run the Quasar server:
+```
 quasar dev
-
-Now, you should have the PupFolio project up and running on your local machine. Access it through your browser at http://localhost:8080.
-
-Feel free to explore and enjoy the adorable puppies in your portfolio!
+```
