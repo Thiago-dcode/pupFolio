@@ -38,7 +38,7 @@ cd api
 ```
 composer install
 ```
-* #### Copy the Copy the **.env.example** file and rename it to **.env.** 
+* ####  Copy the **.env.example** file and rename it to **.env.** 
 
 * #### Update the following values in the **.env** file below DB_CONNECTION=mysql:
 ```
