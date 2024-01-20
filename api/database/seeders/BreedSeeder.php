@@ -14,13 +14,17 @@ class BreedSeeder extends Seeder
     public function run(): void
     {
         $randomBreeds = [
+            "papillon",
+            "pekinese",
             "labrador",
+            "pembroke",
             "boxer",
             "dalmatian",
             "beagle",
             "husky",
             "malamute",
             "chihuahua",
+            "redbone",
             "corgi",
             "bulldog",
             "poodle",

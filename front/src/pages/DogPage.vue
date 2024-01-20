@@ -53,7 +53,7 @@ import Container from 'src/components/Container.vue';
 export default {
     components: { BreedCard, Container },
     setup() {
-       
+        
         const route = useRoute()
         const { isLoading, fullImageUrl, getRandomDogImage } = useRandomDogImage()
         const dog = ref(null);
@@ -62,7 +62,7 @@ export default {
         const apiUrl = process.env.API;
         onMounted(async () => {
 
-         
+            
 
             try {
                 // Access the dynamic route parameter in the setup function
@@ -79,7 +79,7 @@ export default {
 
                 dog.value = data?.dog
              
-
+                console.log(apiUrl)
                 if(!dog.value.image)
                { getRandomDogImage(dog.value.breed.name)}
              

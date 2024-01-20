@@ -1,3 +1,11 @@
-*
+# Ignore all folders
+*/
+
+# But don't ignore the 'logo' folder
+!logo/
+
+# Also include the 'public' folder
 !public/
+
+# Exclude the .gitignore file itself
 !.gitignore

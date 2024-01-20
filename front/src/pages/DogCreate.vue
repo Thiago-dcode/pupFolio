@@ -2,13 +2,13 @@
     <q-page id="main" padding class="flex flex-center">
 
         <q-form id="form-create" @submit="onSubmit" @reset="onReset" class="q-pa-md shadow-1">
-            <q-input v-model="form.name" label="Dog name" hint="Your doggy name" lazy-rules
+            <q-input v-model="form.name" label="Dog name" hint="Your dog name" lazy-rules
                 :rules="[val => val && val.length > 0 || 'Please type something']" />
             <q-input v-model="form.description" hint="Tell us about your dog" label="Description" type="textarea" autogrow
                 :rules="[val => val && val.length > 0 || 'Please type something']"></q-input>
-            <q-select outlined hint="Your doggy breed" :pending="isPending" v-model="form.breed" option-label="name"
+            <q-select outlined hint="Your dog breed" :pending="isPending" v-model="form.breed" option-label="name"
                 option-value="id" :options="breedList" label="Breed" />
-            <q-select outlined hint="Your doggy size" :pending="isPending" v-model="form.size" option-label="name"
+            <q-select outlined hint="Your dog size" :pending="isPending" v-model="form.size" option-label="name"
                 option-value="id" :options="sizeList" label="Size" />
             <div id="file-color">
 
@@ -23,10 +23,11 @@
                     </q-file>
                     <q-img :src="imageUrl" spinner-color="white" style="max-height: 80px;" width="100px" fit></q-img>
                 </div>
-                <q-color default-view="spectrum" v-model="form.color" no-header-tabs style="width: 250px;"
+                <div class="text-subtitle6">Your dog color
+                <q-color title="Dog color" default-view="spectrum" v-model="form.color" no-header-tabs style="width: 250px;"
                     class="my-picker" />
 
-
+                </div>
 
             </div>
             <div id="button-div">
@@ -151,6 +152,7 @@ export default {
     max-width: 700px;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
 }

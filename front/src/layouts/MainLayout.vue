@@ -1,11 +1,11 @@
 <template>
   <q-layout view="hHh Lpr fff">
 
-    <q-header class="bg-primary text-white" height-hint="98">
+    <q-header class="bg-blue-9 text-white" height-hint="50">
       <q-toolbar>
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+          <q-avatar style="width: 70px; height: 70px;">
+            <img :src="logo">
           </q-avatar>
           PupFolio
         </q-toolbar-title>
@@ -31,7 +31,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 
-
+import logo from "assets/logo/logo.png"
 
 export default defineComponent({
   name: 'MainLayout',
@@ -44,7 +44,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     return {
-
+      logo,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
