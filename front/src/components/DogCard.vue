@@ -1,10 +1,11 @@
 <template>
-  <q-card class="my-card">
-    <router-link :to="`/dogs/${dog.id}`">
-      <q-img :src="fullImageUrl" ratio="1" />
-    </router-link>
+  <q-card style="height: 400px;" class="my-card">
+    <q-img :src="!dog.image ? fullImageUrl : api + dog.image" ratio="1" />
+
     <q-card-section>
-      <div class="text-h6">{{ dog.name }}</div>
+      <router-link style="" :to="`/dogs/${dog.id}`">
+        <div class="text-h6">{{ dog.name }}</div>
+      </router-link>
       <div class="text-subtitle2">{{ dog.breed.name }}</div>
     </q-card-section>
 
@@ -13,6 +14,7 @@
     </q-card-section>
   </q-card>
 </template>
+
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue';
@@ -30,20 +32,21 @@ export default defineComponent({
     },
   },
   setup({ dog, api }) {
-   
+
     const { isLoading, fullImageUrl, getRandomDogImage } = useRandomDogImage();
     // Watch for changes in the dog prop
-    onMounted( () => {
-      if (!fullImageUrl.value) {
+    onMounted(() => {
+      if (!dog.image) {
         getRandomDogImage(dog.breed.name)
+
       }
+
     });
 
-    
+
     return {
       isLoading,
       fullImageUrl,
-
 
     };
   },

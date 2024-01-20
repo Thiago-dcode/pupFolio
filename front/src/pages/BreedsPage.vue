@@ -25,14 +25,14 @@ export default defineComponent({
         const loading = ref(true);
         const breeds = ref([]);
         const apiUrl = process.env.API;
-        console.log(apiUrl)
+        
         // Fetch breeds when the component is mounted
         onMounted(async () => {
             try {
                 const response = await axios.get(`${apiUrl}/api/breeds`);
 
                 breeds.value = response.data?.breeds;
-                console.log(response.data?.breeds)
+              
             } catch (error) {
                 console.error('Error fetching breeds:', error);
             } finally {

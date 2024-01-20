@@ -11,7 +11,7 @@
             </q-card-section>
 
             <q-card-section class="col-5 flex flex-center">
-                <q-img class="rounded-borders" src="https://cdn.quasar.dev/img/parallax2.jpg" />
+                <q-img class="rounded-borders" :src="!breed.image ? fullImageUrl : api + breed.image" ratio="1" />
             </q-card-section>
         </q-card-section>
         <div class="text-caption text-grey">
@@ -21,7 +21,7 @@
 
         <q-card-section  class="extra-info card-child">
             <div class="child">
-                <p>Lifespan</p>
+                <p>Lifespan(years)</p>
                 <span>{{ breed.lifespan }}</span>
             </div>
             <div  class="child">
@@ -32,36 +32,44 @@
     </q-card>
 </template>
 
-<script >
-import { defineComponent } from 'vue'
-
+<script>
+import { defineComponent, ref, onMounted } from 'vue';
+import useRandomDogImage from './useRandomDogImage';
 export default defineComponent({
-    name: 'DogCard',
-   
-    props: {
-        breed: {
-            type: Object,
-            required: true
-        },
-        api: {
-            type: String,
-            required: true
-        }
-
-
+  name: 'BreedCard',
+  props: {
+    breed: {
+      type: Object,
+      required: true,
     },
-    computed: {
-        fullImageUrl() {
-            return this.api + this.dog.image;
-        }
-    }
-},
-)
+    api: {
+      type: String,
+      required: true,
+    },
+  },
+  setup({ breed, api }) {
 
+    const { isLoading, fullImageUrl, getRandomDogImage } = useRandomDogImage();
+    // Watch for changes in the dog prop
+    onMounted(() => {
+      if (!breed.image) {
+        getRandomDogImage(breed.name)
+        return
+      }
+
+    });
+
+
+    return {
+      isLoading,
+      fullImageUrl,
+
+    };
+  },
+
+});
 </script>
-
-<style scoped>
-
+<style>
 .my-card {
     height: 250px;
     display: flex;

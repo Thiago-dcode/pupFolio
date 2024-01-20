@@ -15,8 +15,8 @@ const useRandomDogImage = () => {
 
         if (!response.ok) {
           if (response.status === 404) {
-            console.log(response.status);
             response = await fetch('https://dog.ceo/api/breeds/image/random');
+            
           }
         }
 

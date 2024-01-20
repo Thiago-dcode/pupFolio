@@ -27,8 +27,10 @@ class BreedSeeder extends Seeder
             "pug",
             "shiba",
             "rottweiler",
-            "basset",
-            "collie"
+            "weimaraner",
+            "collie",
+            "whippet",
+            "tervuren"
         ];
         $breeds = [];
         foreach ($randomBreeds as $key => $breed) {
@@ -43,7 +45,7 @@ class BreedSeeder extends Seeder
                 'updated_at' => now()
             ],);
         };
-      
+
 
         DB::table('breeds')->insert($breeds);
     }

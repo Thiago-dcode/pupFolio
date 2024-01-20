@@ -6,13 +6,38 @@
         <div v-else-if="error">{{ error }}</div>
         <Container v-else>
 
-            <p v-if="dog">Dog Name: {{ dog.name }}</p>
-            <p v-if="dog">Breed: {{ dog.breed.name }}</p>
-            <p v-if="dog">Description: {{ dog.description }}</p>
-            <div>
-                <div class="text-subtitle2">Breed:</div>
-                <BreedCard :breed="dog.breed" />
-            </div>
+
+
+            <q-card class="my-card bg-blue-4 text-white">
+                <div class="text-overline">Dog info</div>
+                <q-card-section>
+                    <div style="width: 100%;">
+                       
+                        <div class="text-h6">{{ dog.name }}</div>
+                    </div>
+
+
+                </q-card-section>
+
+                <q-card-section>
+                    {{ dog.description }}
+                </q-card-section>
+
+                <q-separator dark />
+
+                <q-card-actions>
+                    <q-btn flat>Color:</q-btn>
+                    <div :style="`background:${dog.color}; width:20px; height:20px`"></div>
+                </q-card-actions>
+            </q-card>
+            <q-card class="my-card">
+                <q-img ratio="1" :src="fullImageUrl">
+
+                </q-img>
+            </q-card>
+
+            <BreedCard :breed="dog.breed" />
+
 
 
         </Container>
@@ -23,18 +48,22 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import BreedCard from 'src/components/BreedCard.vue';
+import useRandomDogImage from 'src/components/useRandomDogImage';
 import Container from 'src/components/Container.vue';
 export default {
     components: { BreedCard, Container },
     setup() {
 
         const route = useRoute()
-
+        const { isLoading, fullImageUrl, getRandomDogImage } = useRandomDogImage()
         const dog = ref(null);
         const loading = ref(true);
         const error = ref(null);
         const apiUrl = process.env.API;
         onMounted(async () => {
+
+
+
             try {
                 // Access the dynamic route parameter in the setup function
 
@@ -49,7 +78,7 @@ export default {
                 const data = await response.json();
 
                 dog.value = data?.dog
-                console.log(data.dog.breed)
+                getRandomDogImage(dog.value.breed.name)
 
             } catch (error) {
                 // Handle any errors that occur during the fetch
@@ -65,6 +94,7 @@ export default {
             dog,
             loading,
             error,
+            isLoading, fullImageUrl,
 
         };
 
@@ -72,3 +102,18 @@ export default {
 
 };
 </script>
+
+<style>
+#container {
+    width: 100%;
+}
+
+#parent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+</style>

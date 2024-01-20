@@ -1,9 +1,6 @@
 <template>
     <q-page class="flex flex-center ">
-        <h1>List of Dogs</h1>
-
-
-        <q-inner-loading v-if="loading" :showing="visible" label="Please wait..." label-class="text-teal"
+       <q-inner-loading v-if="loading" :showing="visible" label="Please wait..." label-class="text-teal"
             label-style="font-size: 1.1em" />
         <Container v-else>
             <DogCard v-for="dog in dogs" :key="dog.id" :api="apiUrl + '/'" :dog="dog" />
@@ -27,16 +24,15 @@ export default defineComponent({
         const dogs = ref([]);
         const apiUrl = process.env.API;
         const route = useRoute()
-        console.log("route",route.query.breed)
-        console.log(apiUrl)
+    
         // Fetch dogs when the component is mounted
         onMounted(async () => {
             try {
-                console.log(`${apiUrl}/api/dogs${route.query.breed?`?breed=${route.query.breed}`:''}`)
+               
                 const response = await axios.get(`${apiUrl}/api/dogs${route.query.breed?`?breed=${route.query.breed}`:''}`);
 
                 dogs.value = response.data?.dogs;
-                console.log(response.data?.dogs)
+               
             } catch (error) {
                 console.error('Error fetching dogs:', error);
             } finally {
