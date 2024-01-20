@@ -1,6 +1,16 @@
-// eslint-disable-next-line vue/multi-word-component-names
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div class="q-mr-auto q-ml-auto" style="max-width: 700px;">
-    <slot></slot>
+    <div id="container" class="q-pa-md row items-start q-gutter-md"  >
+        <slot></slot>
     </div>
 </template>
+
+<style scoped>
+#container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+</style>

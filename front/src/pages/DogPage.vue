@@ -1,21 +1,31 @@
 <template>
-    <div>
+    <q-page>
 
         <q-inner-loading v-if="loading" :showing="visible" label="Please wait..." label-class="text-teal"
             label-style="font-size: 1.1em" />
         <div v-else-if="error">{{ error }}</div>
-        <div v-else>
+        <Container v-else>
+
             <p v-if="dog">Dog Name: {{ dog.name }}</p>
             <p v-if="dog">Breed: {{ dog.breed.name }}</p>
             <p v-if="dog">Description: {{ dog.description }}</p>
+            <div>
+                <div class="text-subtitle2">Breed:</div>
+                <BreedCard :breed="dog.breed" />
+            </div>
 
-        </div>
-    </div>
+
+        </Container>
+
+    </q-page>
 </template>
 <script>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import BreedCard from 'src/components/BreedCard.vue';
+import Container from 'src/components/Container.vue';
 export default {
+    components: { BreedCard, Container },
     setup() {
 
         const route = useRoute()
@@ -39,6 +49,7 @@ export default {
                 const data = await response.json();
 
                 dog.value = data?.dog
+                console.log(data.dog.breed)
 
             } catch (error) {
                 // Handle any errors that occur during the fetch
@@ -54,7 +65,10 @@ export default {
             dog,
             loading,
             error,
+
         };
+
     },
+
 };
 </script>

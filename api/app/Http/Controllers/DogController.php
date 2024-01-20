@@ -10,9 +10,22 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dogs = Dog::all();
+        $input = $request->all();
+      
+        $dogs = [];
+        // Check if 'breed' input exists in the request
+        if (isset($input['breed'])) {
+            // If breed is provided, filter dogs by breed
+            $dogs = Dog::whereHas('breed', function ($query) use ($input) {
+                $query->where('name', $input['breed']);
+            })->get();
+        } else {
+            // If no breed provided, get all dogs
+            $dogs = Dog::all();
+        }
+
         return response()->json(['dogs' => $dogs], 200);
     }
 
@@ -28,6 +41,8 @@ class DogController extends Controller
 
     public function create(Request $request)
     {
+       
+
         try {
             $fields = $request->validate([
 
@@ -36,7 +51,7 @@ class DogController extends Controller
                 'description' => 'required|string',
                 'breed' => ['required', 'exists:breeds,id'],
                 'size' => ['required', 'exists:sizes,id'],
-                'image' => 'required|file',
+                'image' => 'required|mimes:jpeg,png,jpg',
             ]);
 
             // Handle file upload for image if provided
@@ -61,8 +76,10 @@ class DogController extends Controller
                     $imagePath = $image->storeAs('dog_images', $uniqueFilename, 'public');
                 } else {
                     // Handle invalid file format (not an image or unsupported format)
-                    return response()->json(['error' => 'Invalid file format. Only PNG and JPEG images are allowed.'], 422);
+                    return response()->json(['errors' => ['image' => 'Wrong file format']], 422);
                 }
+            } else {
+                return response()->json(['errors' => ['image' => 'No image']], 422);
             }
 
             $dog = Dog::create([
@@ -71,7 +88,7 @@ class DogController extends Controller
                 'description' => $fields['description'],
                 'breed_id' => $fields['breed'],
                 'size_id' => $fields['size'],
-                'image' =>'storage/'. $imagePath,
+                'image' =>  $imagePath,
             ]);
 
             return response()->json(['dog' => $dog], 201);
@@ -85,10 +102,10 @@ class DogController extends Controller
     }
     public function destroy($id)
     {
-        
+
         try {
             $dog = Dog::findOrFail($id);
-        
+
             $dog->delete();
 
             return response()->json(['message' => 'Dog deleted successfully'], 200);
