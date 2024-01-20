@@ -1,7 +1,7 @@
 <template>
     <q-page id="main" padding class="flex flex-center">
 
-        <q-form id="form-create" @submit="onSubmit" @reset="onReset" class="q-gutter-xl">
+        <q-form id="form-create" @submit="onSubmit" @reset="onReset" class="q-pa-md shadow-1">
             <q-input v-model="form.name" label="Dog name" hint="Your doggy name" lazy-rules
                 :rules="[val => val && val.length > 0 || 'Please type something']" />
             <q-input v-model="form.description" hint="Tell us about your dog" label="Description" type="textarea" autogrow
@@ -13,8 +13,13 @@
             <div id="file-color">
 
                 <div id="image-div">
-                    <q-file accept="image/*" use-chips v-model="form.image" label="Pick your dog image"
+                    <q-file counter accept="image/*" use-chips v-model="form.image" label="Pick your dog image"
                         @update:model-value="handleUpload">
+                        <template #prepend>
+
+                            <q-icon name="pets"></q-icon>
+
+                        </template>
                     </q-file>
                     <q-img :src="imageUrl" spinner-color="white" style="max-height: 80px;" width="100px" fit></q-img>
                 </div>
@@ -33,23 +38,27 @@
     </q-page>
 </template>
 <script>
-import { useQuasar } from 'quasar'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 export default {
     setup() {
 
+        const router = useRouter()
         const form = ref({})
-
         const isPending = ref(true)
         const breedList = ref([])
         const sizeList = ref([])
-        const accept = ref(false)
         const apiUrl = process.env.API;
         const imageUrl = ref('');
-        const handleUpload = (e) => {
-            imageUrl.value = null
+        const handleImage = (e) => {
+
+            console.log(e)
+        }
+        const handleUpload = () => {
+
+            imageUrl.value = ''
 
             if (form.value.image) {
 
@@ -58,6 +67,8 @@ export default {
         }
 
         onMounted(async () => {
+
+           
             try {
                 // Access the dynamic route parameter in the setup function
 
@@ -84,11 +95,11 @@ export default {
 
         return {
             form,
-            accept,
             breedList,
             sizeList,
             isPending,
             handleUpload,
+            handleImage,
             imageUrl,
 
             async onSubmit() {
@@ -103,15 +114,19 @@ export default {
                         color: form.value.color,
                     };
 
-                    console.log(formData.image);
+                  
 
-                    const response = await axios.post(`${apiUrl}/api/dogs`, {image:form.value}, {
+                    const response = await axios.post(`${apiUrl}/api/dogs`, formData, {
                         headers: {
-                            'Content-Type': 'application/json',
+                            'Content-Type': 'multipart/form-data',
                         },
                     });
+                    console.log(response.data.dog.id);
 
-                    console.log('success', response.data);
+                    router.push({path:`/dogs/${response.data.dog.id}`})
+
+
+
                 } catch (error) {
                     console.error('Error submitting form:', error.response?.data);
 

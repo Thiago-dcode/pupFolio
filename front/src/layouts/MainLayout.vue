@@ -15,7 +15,7 @@
 
         <q-route-tab to="/dogs" label="Dogs" />
         <q-route-tab to="/breeds" label="Breeds" />
-        <q-route-tab to="/dogs/new"><q-btn size="10px" round color="black" text="black" icon="pets" /></q-route-tab>
+        <q-route-tab to="/new"><q-btn size="10px" round color="black" text="black" icon="pets" /></q-route-tab>
 
       </q-tabs>
 

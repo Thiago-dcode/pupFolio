@@ -1,6 +1,6 @@
 <template>
   <q-card style="height: 400px;" class="my-card">
-    <q-img :src="!dog.image ? fullImageUrl : api + dog.image" ratio="1" />
+    <q-img :src="!dog.image ? fullImageUrl : api +'/' + dog.image" ratio="1" />
 
     <q-card-section>
       <router-link style="" :to="`/dogs/${dog.id}`">

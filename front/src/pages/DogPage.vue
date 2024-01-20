@@ -31,7 +31,7 @@
                 </q-card-actions>
             </q-card>
             <q-card class="my-card">
-                <q-img ratio="1" :src="fullImageUrl">
+                <q-img ratio="1" :src="!dog.image ? fullImageUrl : apiUrl + dog.image">
 
                 </q-img>
             </q-card>
@@ -53,7 +53,7 @@ import Container from 'src/components/Container.vue';
 export default {
     components: { BreedCard, Container },
     setup() {
-
+       
         const route = useRoute()
         const { isLoading, fullImageUrl, getRandomDogImage } = useRandomDogImage()
         const dog = ref(null);
@@ -62,7 +62,7 @@ export default {
         const apiUrl = process.env.API;
         onMounted(async () => {
 
-
+         
 
             try {
                 // Access the dynamic route parameter in the setup function
@@ -78,8 +78,11 @@ export default {
                 const data = await response.json();
 
                 dog.value = data?.dog
-                getRandomDogImage(dog.value.breed.name)
+             
 
+                if(!dog.value.image)
+               { getRandomDogImage(dog.value.breed.name)}
+             
             } catch (error) {
                 // Handle any errors that occur during the fetch
                 console.error('Error fetching dog data:', error);
@@ -94,6 +97,7 @@ export default {
             dog,
             loading,
             error,
+            apiUrl,
             isLoading, fullImageUrl,
 
         };

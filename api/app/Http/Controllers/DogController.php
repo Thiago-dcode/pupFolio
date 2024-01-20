@@ -13,18 +13,18 @@ class DogController extends Controller
     public function index(Request $request)
     {
         $input = $request->all();
-      
-        $dogs = [];
+
         // Check if 'breed' input exists in the request
+        $query = Dog::query();
         if (isset($input['breed'])) {
             // If breed is provided, filter dogs by breed
-            $dogs = Dog::whereHas('breed', function ($query) use ($input) {
-                $query->where('name', $input['breed']);
-            })->get();
-        } else {
-            // If no breed provided, get all dogs
-            $dogs = Dog::all();
+            $query->whereHas('breed', function ($subQuery) use ($input) {
+                $subQuery->where('name', $input['breed']);
+            });
         }
+
+        // Order by creation date in descending order (latest first)
+        $dogs = $query->orderBy('created_at', 'desc')->get();
 
         return response()->json(['dogs' => $dogs], 200);
     }
@@ -41,7 +41,7 @@ class DogController extends Controller
 
     public function create(Request $request)
     {
-       
+
 
         try {
             $fields = $request->validate([
@@ -88,7 +88,7 @@ class DogController extends Controller
                 'description' => $fields['description'],
                 'breed_id' => $fields['breed'],
                 'size_id' => $fields['size'],
-                'image' =>  $imagePath,
+                'image' => "/storage/" . $imagePath,
             ]);
 
             return response()->json(['dog' => $dog], 201);
