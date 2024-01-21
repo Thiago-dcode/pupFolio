@@ -38,6 +38,8 @@ cd api
 ```
 composer install
 ```
+* ####  Open the API folder with your code editor:
+* For VS Code just type in the terminal ``code .``
 * ####  Copy the **.env.example** file and rename it to **.env.** 
 
 * #### Update the following values in the **.env** file below DB_CONNECTION=mysql:
