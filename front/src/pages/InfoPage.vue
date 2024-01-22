@@ -42,6 +42,4 @@ export default {
     align-items: center;
     justify-content: center;
 }
-
-#figma {}
 </style>
