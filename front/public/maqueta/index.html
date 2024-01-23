@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+
+    <title>Document</title>
+
+    <script
+      src="https://kit.fontawesome.com/d42bc9825f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+              primary: "#0c3866",
+              secondary: '#007cc0'
+            },
+            fontSize: {
+              14: "14px",
+              16: "16px",
+              18: "18px",
+              22: "22px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="min-h-screen relative w-screen flex flex-col">
+    <header
+      class="bg-primary h-[53px] w-full justify-center items-center sticky top-0 z-50 flex"
+    >
+      <nav
+        class="w-full max-w-[1440px] flex flex-row items-center justify-between md:px-8"
+      >
+        <img
+          class="align-baseline"
+          width="60px"
+          src="./assets/logo-white.svg"
+          alt=""
+        />
+
+        <ul class="links hidden md:flex items-center">
+          <li><a href="https://www.europelanguagejobs.com/jobs">Jobs</a></li>
+          <li><a href="https://www.europelanguagejobs.com/candidates">Candidates</a></li>
+          <li><a href="https://www.europelanguagejobs.com/companies">For Employers</a></li>
+          <li><a href="https://www.europelanguagejobs.com/blog">Career Advice</a></li>
+          <li><a href="">Log in/Sign up</a></li>
+        </ul>
+        <ul class="links flex items-center md:hidden">
+          <li><a href="https://www.europelanguagejobs.com/jobs">Jobs</a></li>
+          <li><a href="">Log in/Sign up</a></li>
+          <li>
+            <button>
+              <i class="fa-solid fa-bars" style="color: white"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+<main class="flex flex-col items-center w-full">
+    <div
+      id="company-div"
+      class="relative bg-black w-full flex px-3 md:px-[3.5rem] flex-col items-center justify-center"
+    >
+      <div id="main-div" class=" px-2 max-w-[1440px]">
+        <div
+          class="w-full text-div flex-col md:flex-row flex text-white md:items-start pt-[50px] gap-9 md:gap-0 justify-between pb-[80px]"
+        >
+          <div class="flex flex-col  w-full md:w-[42%]">
+          <h1 class="leading-[1.12] text-left text-22 font-medium tracking-[1.96px]">
+            Find the perfect employee in our database of more than 25,000 new
+            multilingual candidates each month.
+          </h1>
+          <a target="_blank" class="button text-primary mt-[35px]"
+            href="https://www.europelanguagejobs.com/companies/registry">
+            <button class="bg-white">POST A JOB</button></a>
+             </div>
+
+          <ul class=" w-full md:w-[41.7%]" id="icons">
+          <li>
+            <div>
+              <i aria-hidden="true" class="q-icon fa fa-users"> </i>
+            </div>
+
+
+            <p>
+              <strong class="text-left">+ 2,500</strong>
+
+              <span>companies posting in more than 48 countries</span>
+            </p>
+
+
+          </li>
+          <li>
+            <div>
+
+
+              <i aria-hidden="true" class="q-icon fa fa-clock"> </i>
+            </div>
+
+            <p>
+              <strong class="text-left">Post with ease</strong>
+
+              <span>Publish a job advert in just 2 minutes</span>
+            </p>
+
+
+          </li>
+          <li>
+            <div>
+
+
+              <i aria-hidden="true" class="q-icon fa fa-file"> </i>
+            </div>
+            <p>
+              <strong class="text-left">+ 50,000</strong>
+
+              <span>candidate applications per month</span>
+            </p>
+
+      </div>
+      </li>
+      </ul>
+        </div>
+        <div class="brand-div items-center w-full mt-[20px] justify-center max-w-p[1440px] mb-8">
+      <div class="px-0 flex items-center justify-between w-full ">
+        <div>
+          <i class="fa-solid fa-circle-chevron-left" style="color: rgba(0, 0, 0, 0.7); font-size: 40px"></i>
+        </div>
+        <div class=" w-full justify-around flex items-center gap-2">
+          <img class="w-[120px] h-[80px] md:w-[180px] md:h-[80px]"
+            src="https://static.europelanguagejobs.com/contents/banners/top-companies-posting-foundever-portugal-610-9042.svg"
+            alt="" /><img class="hidden md:block md:w-[180px] md:h-[80px] "
+            src="https://static.europelanguagejobs.com/contents/banners/airproducts-logo-612.svg" alt="" /><img
+            class="w-[100px] h-[80px] md:w-[180px] md:h-[80px]"
+            src="https://static.europelanguagejobs.com/contents/banners/logo-top-company-apple-609-1600.svg" alt="" />
+        </div>
+
+        <div>
+          <i class="fa-solid fa-circle-chevron-right" style="color: rgba(0, 0, 0, 0.7); font-size: 40px"></i>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col items-center p-14  gap-9  md:px-8" id="icon-div">
+      <h2 class="text-primary   text-22 text-center  leading-3">
+        ELJ's <strong class="font-extrabold">hiring solutions</strong>
+      </h2>
+      <div class="flex items-start gap-16 justify-center mt-[48px] w-full">
+        <div class="hidden md:flex flex-col items-center gap-2 w-[120px]">
+          <img
+            src="https://www.europelanguagejobs.com/statics/images/job-posting.svg"
+            alt=""
+          />
+          <p class="font-extrabold text-primary text-18 text-center">JOB POSTING</p>
+        </div>
+      
+        <div class="flex flex-col  gap-2 w-[109px]">
+          <img
+            src="https://www.europelanguagejobs.com/statics/images/cv-search.svg"
+            alt=""
+          />
+          <p class="font-extrabold text-primary text-18 text-center ">CV SEARCH</p>
+        </div>
+        <div class="flex flex-col items-center gap-2 w-[109px]">
+          <img
+            src="https://www.europelanguagejobs.com/statics/images/exposure-features.svg"
+            alt=""
+          />
+          <p class="font-extrabold text-primary text-18 text-center">WEBSITE VISIBILITY</p>
+        </div>
+        <div class="hidden md:flex flex-col items-center gap-2 w-[109px]">
+          <img
+            src="https://www.europelanguagejobs.com/statics/images/outreach-features.svg"
+            alt=""
+          />
+          <p class="font-extrabold text-primary text-18 text-center">OUTREACH
+            FEATURES</p>
+        </div>
+    </div>
+    </div>
+    <div class="  md:px-[3.5rem] text-white bg-secondary m-auto w-full flex flex-center py-[50px]   gap-3 justify-center" id="banner1-div">
+      <div class="flex md:flex-row px-2 flex-col w-full items-center justify-center gap-10">
+
+    
+      <span class="text-22 text-center  ">Find more about our basic and personalized hiring solutions</span>
+      <a target="_blank" class="button text-primary"
+      href="https://www.europelanguagejobs.com/companies/our-services">
+      <button class="bg-white text-center ">LEARN MORE</button></a>
+    </div>
+    </div>
+    <div class="w-full flex flex-col items-center py-20 gap-16 md:px-[3.5rem] max-w-[1440px]" id="form-div">
+      <h2 class="text-primary  text-22 text-center ">
+        <strong class="font-extrabold">Tell us about </strong>
+        your needs!
+      </h2>
+   <div class=" flex flex-wrap w-full items-center justify-center md:px-32">
+
+
+      <form class="w-full bg-[#f4f4f4] p-8 md:py-20 md:px-12 flex gap-10 items-start  justify-center md:flex-row flex-col" action="">
+        <div class=" w-full  justify-center flex flex-col items-start gap-9">
+          <div class=" w-full flex items-center justify-center ">
+            <i  class=" fa fa-user" style="font-size: 28px; color: #979797;"> </i>
+            <input class="w-full text-gray-100 pb-3 border-b-2 border-b-gray bg-transparent" type="text" placeholder="Your name" name="" id="">
+          </div>
+          <div class="w-full flex items-center justify-center ">
+            <i  class=" fa fa-building" style="font-size: 28px; color: #979797;"> </i>
+            <input class="w-full border-b-2 text-gray-100 pb-3 border-b-gray bg-transparent" type="text" placeholder="Your company" name="" id="">
+          </div>
+          <div class="w-full flex items-center justify-center ">
+            <i  class=" fa fa-envelope" style="font-size: 28px; color: #979797;"> </i>
+            <input class="w-full text-gray-100  pb-3 border-b-2 border-b-gray bg-transparent" type="text" placeholder="Your Email" name="" id="">
+          </div>
+
+        </div>
+        <div class=" w-full justify-center flex flex-col items-start gap-2">
+          <textarea   class="w-full resize-none leading-6  h-[150px] bg-transparent border-b-2 text-gray-100 " name="" placeholder="Your message" id="" cols="30" rows="10"></textarea>
+        
+            <div class="flex gap-2">
+              <input class="border-primary outline-none" type="checkbox" name="" id="">
+              <p>I accept the Legal <a href="https://www.europelanguagejobs.com/eulangjobs/legal-conditions">Conditions</a></p>
+            </div>
+            <div class="flex flex-col">
+             
+              <button class="text-14 px-[16px] py-[8px] text-white shadow-lg rounded-[30px] mt-[28px] bg-[#506F90] text-center">SEND MESSAGE</button>
+              <a class="text-[#0c3866]" href="https://www.europelanguagejobs.com/companies/registry">or post a job</a>
+            </div>
+        </div>
+       
+
+      </form>
+    </div>
+
+    </div>
+    <div class="md:px-[3.5rem] brand-div items-center w-full mt-[20px] justify-center max-w-p[1440px] mb-8">
+      <div class="px-0 flex items-center justify-between w-full ">
+        <div>
+          <i class="fa-solid fa-circle-chevron-left" style="color: rgba(0, 0, 0, 0.7); font-size: 40px"></i>
+        </div>
+        <div class=" w-full justify-around flex items-center gap-2">
+          <img class="w-[120px] h-[80px] md:w-[180px] md:h-[80px]"
+            src="https://www.europelanguagejobs.com/statics/images/broadbean.svg"
+            alt="" /><img class="hidden md:block md:w-[180px] md:h-[80px] "
+            src="https://www.europelanguagejobs.com/statics/images/hrlink.svg" alt="" /><img
+            class="w-[100px] h-[80px] md:w-[180px] md:h-[80px]"
+            src="https://www.europelanguagejobs.com/statics/images/logicmelon.svg" alt="" />
+        </div>
+        
+        <div>
+          <i class="fa-solid fa-circle-chevron-right" style="color: rgba(0, 0, 0, 0.7); font-size: 40px"></i>
+        </div>
+      </div>
+    </div>
+    <div class="  md:px-[3.5rem] text-white bg-secondary m-auto w-full flex flex-center py-[50px]   gap-3 md:justify-center" id="banner2-div">
+      <div class="flex md:flex-row px-2 flex-col w-full items-center justify-center gap-10">
+
+    
+      <span class="text-[32px] text-center ">Together, your hires, our goal!</span>
+     
+    </div>
+  </main>
+    <footer class="w-full bg-[#ebeff3] items-center justify-center flex ">
+      <div class="w-full items-center justify-center flex-col max-w-[1440px] py-8 px-4 md:mx-[3rem] ">
+
+    
+      <div class="w-full  border-t-4 border-t-primary border-b-4 border-b-primary py-8 flex items-start px-3 flex-wrap md:flex-nowrap md:justify-center flex-shrink  md:gap-2 gap-6">
+        <div class="flex flex-col items-start max-w-[250px]">
+        <img style="width: 100px; height: 100px;" src="https://www.europelanguagejobs.com/statics/images/logo-elj-no-bg.png" alt="">
+        <p class="text-[#007cc0] text-14 mt-[16px] mb-[24px] font-bold"><b>Europe Language Jobs - the job <br>
+          board for expat jobs abroad  </b></p>
+          <p class="text-14 text-primary" ><b> We help expats find jobs in Europe using their <br>
+            native language and gain international experience <br>
+            by working in a foreign country.</b> </p>
+        </div>
+        <div class="flex flex-col   gap-3">
+          <p class="font-extrabold text-primary"><b>FOR JOB SEEKERS</b></p>
+          <a  href="https://www.europelanguagejobs.com/jobs" class="link-footer" style="text-decoration: none;">
+            Find a job
+        </a>
+        <a  href="https://www.europelanguagejobs.com/candidates" class="link-footer" style="text-decoration: none;">
+         Create an account
+      </a>
+      <a  href="https://www.europelanguagejobs.com/blog" class="link-footer" style="text-decoration: none;">
+       Career advice
+    </a>
+       <p class="font-extrabold text-primary"><b>STAY CONNECTED</b></p>
+       <div class="flex items-center gap-2 flex-wrap">
+        <div class=" social-icon ">
+          <a href="https://www.linkedin.com/company/europe-language-jobs/">
+            <i class="fa-brands fa-linkedin-in" style="color: #ffffff;"></i>
+          </a>
+         
+        </div>
+        <div class=" social-icon ">
+          <a href="https://www.facebook.com/EuropeLanguageJobs">
+            <i class="fa-brands fa-facebook-f" style="color: #ffffff;"></i>
+          </a>
+       
+        </div>
+        <div class=" social-icon ">
+          <a href="https://www.tiktok.com/@europelanguagejobs">
+            <i class="fa-brands fa-tiktok" style="color: #ffffff;"></i>
+          </a>
+         
+        </div>
+        <div class=" social-icon ">
+          <a href="https://www.youtube.com/c/Europelanguagejobs"> <i class="fa-brands fa-youtube" style="color: #ffffff;"></i></a>
+         
+        </div>
+        <div class=" social-icon ">
+          <a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=europelangjobs">  <i class="fa-brands fa-twitter" style="color: #ffffff;"></i></a>
+        
+        </div>
+        <div class=" social-icon " style="background-color: #4F5FA9;">
+          <a href="https://discord.gg/UNKxY7rJNz">
+            <i class="fa-brands fa-discord" style="color: #ffffff;"></i>
+          </a>
+        
+        </div>
+
+
+      </div>
+        </div>
+        <div class="flex flex-col   gap-3">
+          <p class="font-extrabold text-primary"><b>FOR EMPLOYERS</b></p>
+          <a  href="https://www.europelanguagejobs.com/companies" class="link-footer" style="text-decoration: none;">
+            Post a job
+        </a>
+        <a  href="https://www.europelanguagejobs.com/companies/registry" class="link-footer" style="text-decoration: none;">
+         Create an account
+      </a>
+      <a  href="https://www.europelanguagejobs.com/companies/our-services" class="link-footer" style="text-decoration: none;">
+       Hiring solutions
+    </a>
+       <p class="font-extrabold text-primary"><b>DOWNLOAD THE APP</b></p>
+        <div class="flex items-center gap-3">
+          <a href="https://www.europelanguagejobs.com/sl/goplaces-android?utm_source=goplaces&utm_medium=banner-footer-desktop&utm_campaign=android&internal_camp=banner-footer">
+            <img style="width: 150px;" src="https://static.europelanguagejobs.com/contents/images/go-places-application/google-white-button.svg" alt="">
+          </a>
+          <a href="https://apps.apple.com/us/app/goplaces-job-search-abroad/id1618894216?pt=123952963&ct=banner-footer&mt=8">
+            <img style="width: 150px;" src="https://static.europelanguagejobs.com/contents/images/go-places-application/apple-white-button.svg" alt="">
+          </a>
+        
+        </div>
+        </div>
+        <div class="flex flex-col  gap-3">
+          <p class="font-extrabold text-primary"><b>EUROPE LANGUAGE JOBS</b></p>
+          <a  href="https://www.europelanguagejobs.com/about-us" class="link-footer" style="text-decoration: none;">
+            About us
+        </a>
+        <a  href="https://www.europelanguagejobs.com/eulangjobs/faq" class="link-footer" style="text-decoration: none;">
+        FAQ
+      </a>
+      <a  href="https://www.europelanguagejobs.com/eulangjobs/legal-conditions" class="link-footer" style="text-decoration: none;">
+      Legal conditions
+    </a>
+    <a  href="https://www.europelanguagejobs.com/eulangjobs/cookies-policy" class="link-footer" style="text-decoration: none;">
+      Cookies policy
+    </a>
+    <a  href="https://www.europelanguagejobs.com/eulangjobs/contact" class="link-footer" style="text-decoration: none;">
+      Contact us
+    </a>
+        </div>
+      </div>
+      <span class=" px-2 pt-2 self-start text-[12px] font-thin"><span data-v-7d430532="" class="italic">Copyright</span> © 2023 - Europe Language Jobs. All rights reserved.
+    </span>
+  </div>
+    </footer>
+  </body>
+</html>

@@ -9,7 +9,7 @@
           </q-avatar>
           PupFolio
         </q-toolbar-title>
-        <router-link  style="text-decoration: none; color: inherit;" to="/info"> <q-btn size="10px" round text="black" icon="info" /></router-link>
+        <a  style="text-decoration: none; color: inherit;" href="maqueta/index.html"> <q-btn size="10px" round text="black" icon="info" /></a>
 
       </q-toolbar>
 
